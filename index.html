@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Landing Page Faster</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            --secondary-color: #E5E7EB;
+            --text-color: #1F2937;
+            --light-text-color: #6B7280;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: #F9FAFB;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        .hero {
+            text-align: center;
+            padding: 5rem 0;
+            background-color: #fff;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--light-text-color);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #4338CA;
+        }
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+        .btn-secondary:hover {
+            background-color: #D1D5DB;
+        }
+        .section {
+            padding: 5rem 0;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .feature-grid, .pricing-grid, .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature, .plan, .testimonial {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature:hover, .plan:hover, .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .feature h3, .plan h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .plan {
+            text-align: center;
+        }
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+        .plan ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        .plan ul li {
+            margin-bottom: 0.5rem;
+        }
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial cite {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .faq-item {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .faq-item h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        footer {
+            background-color: var(--text-color);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">inWind</div>
+                <ul>
+                    <li><a href="#features">特性</a></li>
+                    <li><a href="#pricing">定价</a></li>
+                    <li><a href="#testimonials">客户反馈</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                    <li><a href="#about">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container animate-fade-in-up">
+                <h1>Make Landing Page Faster<br>使登陆页面更快</h1>
+                <p>This is a free, open-source and powerful landing page template for saas project, it will help you to make your startup faster.</p>
+                <p>这是一个免费、开源且功能强大的SaaS项目登陆页面模板，它将帮助您使创业更快地启动。</p>
+                <a href="#" class="btn">Get Source Code</a>
+                <a href="#" class="btn btn-secondary">View Docs</a>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <h2 class="section-title">Features of inWind Landing Page Template</h2>
+                <div class="feature-grid">
+                    <div class="feature animate-fade-in-up">
+                        <i data-feather="code" class="feature-icon"></i>
+                        <h3>Open Source Advantage</h3>
+                        <p>完全开源，具有丰富的自定义选项。</p>
+                    </div>
+                    <div class="feature animate-fade-in-up">
+                        <i data-feather="smartphone" class="feature-icon"></i>
+                        <h3>Responsive Design</h3>
+                        <p>响应式设计，确保在各种设备上的最佳显示。</p>
+                    </div>
+                    <div class="feature animate-fade-in-up">
+                        <i data-feather="search" class="feature-icon"></i>
+                        <h3>SEO Optimized</h3>
+                        <p>针对搜索引擎优化，提高网站可发现性。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="section">
+            <div class="container">
+                <h2 class="section-title">Choose Your Plan 选择您的计划</h2>
+                <div class="pricing-grid">
+                    <div class="plan animate-fade-in-up">
+                        <h3>Free 自由版</h3>
+                        <div class="plan-price">$0/mo</div>
+                        <ul>
+                            <li>Unlimited access to all features</li>
+                            <li>无限制访问所有功能</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                    <div class="plan animate-fade-in-up">
+                        <h3>Pro 专业版</h3>
+                        <div class="plan-price">$49.9/mo</div>
+                        <ul>
+                            <li>All Free features</li>
+                            <li>Premium support</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                    <div class="plan animate-fade-in-up">
+                        <h3>Enterprise 企业版</h3>
+                        <div class="plan-price">$99.9/mo</div>
+                        <ul>
+                            <li>All Pro features</li>
+                            <li>Custom integrations</li>
+                        </ul>
+                        <a href="#" class="btn">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section">
+            <div class="container">
+                <h2 class="section-title">Wall of Love 爱之墙</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial animate-fade-in-up">
+                        <p>"The performance of this template is outstanding..."</p>
+                        <cite>User 用户</cite>
+                    </div>
+                    <div class="testimonial animate-fade-in-up">
+                        <p>"Incredibly easy to customize and deploy..."</p>
+                        <cite>Developer 开发者</cite>
+                    </div>
+                    <div class="testimonial animate-fade-in-up">
+                        <p>"Saved me hours of development time..."</p>
+                        <cite>Startup Founder 创业者</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions 经常问的问题</h2>
+                <div class="faq-item animate-fade-in-up">
+                    <h3>What is a landing page?</h3>
+                    <p>A landing page is a standalone web page designed specifically for a marketing or advertising campaign. It's where a visitor "lands" after clicking on a link in an email, or ads from search engines or similar pages.</p>
+                </div>
+                <div class="faq-item animate-fade-in-up">
+                    <h3>How can I customize this template?</h3>
+                    <p>You can easily customize this template by modifying the HTML, CSS, and JavaScript files. The template is built with modern web technologies, making it flexible and easy to adapt to your specific needs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title">Build Your Landing Page Now 立即构建您的登陆页面</h2>
+                <p>Build your landing page, show your product, and start earning!</p>
+                <p>构建您的登陆页面，展示您的产品，然后开始盈利！</p>
+                <a href="#" class="btn">Get Source Code</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 inWind Landing Page. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        function animateOnScroll() {
+            var elements = document.querySelectorAll('.animate-fade-in-up');
+            elements.forEach(function(element) {
+                if (isElementInViewport(element)) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
